@@ -14,7 +14,7 @@ class SaleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'price' => 'required',
+            'price' => 'required|numeric|min:0.1',
             'seller_id' => 'required'
         ];
     }
@@ -23,7 +23,10 @@ class SaleStoreRequest extends FormRequest
     {
         return [
             'price.required' => 'É necessário informar o valor da venda',
+            'price.min' => 'Informe um valor maior que 0',
             'seller_id.required' => 'É necessário informar o vendedor.'
         ];
     }
+
+
 }

@@ -15,8 +15,8 @@ class SellerStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required'
+            'name' => 'required|unique:sellers',
+            'email' => 'required|unique:sellers'
         ];
     }
 
@@ -24,7 +24,9 @@ class SellerStoreRequest extends FormRequest
     {
         return [
             'name.required' => 'É necessário informar o Nome do Vendedor.',
-            'email.required' => 'É necessário informar o Email do Vendedor.'
+            'email.required' => 'É necessário informar o Email do Vendedor.',
+            'email.unique' => 'Esse email já existe',
+            'name.unique' => 'Esse nome já existe'
         ];
     }
 }
